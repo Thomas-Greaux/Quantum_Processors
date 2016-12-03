@@ -1,0 +1,12 @@
+package Instructions;
+
+/**
+ * 
+ * @author Thomas Greaux
+ * This class determine which can of instruction we're dealing with
+ *
+ */
+
+public class InstructionClass {
+	
+}

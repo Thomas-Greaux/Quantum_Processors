@@ -1,0 +1,11 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		ROM rom = new ROM();
+		rom.mod(true, 47);
+		rom.print();
+
+	}
+
+}

@@ -1,0 +1,53 @@
+import java.util.ArrayList;
+
+public class ROM {
+	private ArrayList<Boolean> memory;
+	private final int WIDTH = 16;
+	private final int HEIGHT = 16;
+	
+	public ROM(){
+		memory = new ArrayList<>();
+		for(int i = 0; i < WIDTH; i++){
+			for(int j = 0; j < HEIGHT; j++){
+				memory.add(false);
+			}
+		}
+	}
+	
+	public void print(){
+		ArrayList<Boolean> tmp = new ArrayList<>();
+		int k = 0;
+		
+		for(int i = 0; i < HEIGHT; i++){
+			for(int j = 0; j < WIDTH; j++, k++){
+				if(tmp.isEmpty()) {
+					tmp.add(memory.get(k));
+				}
+				else{
+					if(tmp.get(0) == memory.get(k)){
+						tmp.add(memory.get(k));
+					}
+					else{
+						print_tmp(tmp);
+					}
+				}
+				
+			}
+		}
+		
+	}
+		
+	private void print_tmp(ArrayList<Boolean> tmp){
+		if(tmp.size() > 3) System.out.print(tmp.size() + "*" + tmp.get(0));
+		else{
+			for(int i = 0; i < tmp.size(); i++){
+				System.out.print(tmp.get(0) + " ");
+			}
+		}
+	}
+	
+	public void mod(boolean x, int i){
+		memory.set(i, x);
+	}
+
+}
