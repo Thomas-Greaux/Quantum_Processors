@@ -1,9 +1,0 @@
-import java.io.BufferedReader;
-
-public class ReadFile {
-	BufferedReader reader;
-	
-	public ReaderFile(String file){
-		reader = new BufferedReader();
-	}
-}

@@ -1,0 +1,58 @@
+package Instructions;
+
+/**
+ * 
+ * @author Thomas Greaux
+ * This class determine which can of instruction we're dealing with
+ *
+ */
+
+public class InstructionClass {
+	private static final int SIZE = 6;
+	
+	private static int codeop2[] = new int[2];
+	
+	private static int codeop5[] = new int[4];
+	
+	private static int codeop8[] = new int[4];
+
+
+	public void initialize(){
+		codeop2[0] = 0;
+		codeop2[1] = 0;
+		
+		codeop5[0] = 0;
+		codeop5[1] = 1;
+		codeop5[2] = 0;
+		codeop5[3] = 1;
+		
+		codeop8[0] = 1;
+		codeop8[1] = 1;
+		codeop8[2] = 0;
+		codeop8[3] = 1;
+
+		
+	}
+	
+	public static int[] getClasse(int classe){
+		switch(classe){
+		case 2: return getClasse2();
+		case 5: return getClasse5();
+		case 8: return getClasse8();
+		}
+		
+		return new int[1];
+	}
+
+	public static int[] getClasse2(){
+		return codeop2;
+	}
+	
+	public static int[] getClasse5(){
+		return codeop5;
+	}
+	
+	public static int[] getClasse8(){
+		return codeop8;
+	}
+}

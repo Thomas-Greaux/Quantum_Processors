@@ -1,0 +1,6 @@
+package Instructions;
+
+public interface Instruction {
+	int getClasse();
+	String getName();
+}

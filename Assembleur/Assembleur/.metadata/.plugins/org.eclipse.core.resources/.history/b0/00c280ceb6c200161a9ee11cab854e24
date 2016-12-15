@@ -1,0 +1,12 @@
+import Instructions.InstructionClass;
+import Instructions.Classe_2.Add;
+
+public class Main {
+
+	public static void main(String[] args) {
+		String instruction = "LOAD R2";
+		Traductor t = new Traductor();
+		String res = t.toBin(instruction);
+		System.out.println(res);
+	}
+}

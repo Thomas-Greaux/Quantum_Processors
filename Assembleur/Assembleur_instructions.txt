@@ -1,0 +1,42 @@
+##################
+### Assembleur ###
+##################
+
+Codage T1
+LDR et STR a choisir entre T1 et T2
+
+
+Table A5-1 16 bit Thumb instruction encoding
+	Opcode	Instruction or instruction class
+--------------------------------------------------------------------------------
+	00xxxx 	Shift (imm), add, sub, move, compare 			A5-128
+	010000 	Data processing 					A5-169
+	0101xx	Load/Store						A5-131
+	011xxx
+	100xxx
+	1101xx	Conditional branch, supervisor call			A5-134
+
+
+Table A5-2 16-bit shift (imm), add, subtract, move and compare encoding
+	Opcode	Instruction				See
+--------------------------------------------------------------------------------
+	000xx	Logical shift left			LSL(imm)	A7-298
+	001xx	Logical shift right			LSR(imm)	A7-302
+	010xx	Arithmetic Shift right			ASR(imm)	A7-203
+	01100	Add register				ADD(reg)	A7-191
+	01101	Sub register				SUB(reg)	A7-450
+	01110	Add 3-bit imm				ADD(imm)	A7-189
+	100xx	Move					MOV(imm)	A7-312
+
+
+Table A5-5 16-bit Load/Store instructions
+	OpA	OpB		Instruction		See
+--------------------------------------------------------------------------------
+	0110	0xx		Store Register		STR(imm)	A7-426
+	0110	1xx		Load  Register		LDR(imm)	A7-252
+
+
+Table A5-8 Branch and supervisor call instructions
+	OpCode			Instruction		See
+---------------------------------------------------------------------------------
+	not 111x		Conditional branch	B		A7-207
