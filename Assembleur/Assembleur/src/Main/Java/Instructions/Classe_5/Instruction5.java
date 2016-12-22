@@ -7,8 +7,11 @@ import Instructions.Instruction;
  */
 public abstract class Instruction5 implements Instruction{
     private int classe = 5;
+    private String code_classe = "0101";
 
     public int getClasse(){
         return classe;
     }
+
+    public String getCode_classe(){return code_classe;}
 }

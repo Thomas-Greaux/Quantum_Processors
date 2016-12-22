@@ -8,6 +8,8 @@ import Instructions.Classe_3.*;
 import Instructions.Classe_5.*;
 import Instructions.Classe_8.*;
 
+import java.util.ArrayList;
+
 /**
  * 
  * @author Thomas Greaux
@@ -36,7 +38,8 @@ public class InstructionClass {
 		codeop8 = "1101";
 		
 		class2 = new Instruction2[6];
-		class2[0] = new Instructions.Classe_2.Add();
+		class2[0] = new Instructions.Classe_2.Add(true);
+        class2[0] = new Instructions.Classe_2.Add(false);
 		class2[1] = new Instructions.Classe_2.ASR();
 		class2[2] = new Instructions.Classe_2.LSL();
 		class2[3] = new Instructions.Classe_2.LSR();
@@ -68,6 +71,55 @@ public class InstructionClass {
 		class8 = new Instruction8[1];
 		class8[0] = new Instructions.Classe_8.Branch();
 	}
+
+    /**
+     * Returns an Instruction given the name of the instruction
+     * and the number of operands (to differentiate between imm & reg)
+     * @param cmd of the instruction
+     * @return the matching Instruction
+     */
+    //TODO Implementation
+	public Instruction getInstruction(String cmd){
+        ArrayList<Instruction> instructions = new ArrayList<Instruction>(); //List of instructions matching the name
+
+        //Completion of instructions
+        for(Instruction instruction : class2){
+            if(cmd.equals(instruction.getName())) instructions.add(instruction);
+        }
+
+        for(Instruction instruction : class3){
+            if(cmd.equals(instruction.getName())) instructions.add(instruction);
+        }
+
+        for(Instruction instruction : class5){
+            if(cmd.equals(instruction.getName())) instructions.add(instruction);
+        }
+
+        for(Instruction instruction : class8){
+            if(cmd.equals(instruction.getName())) instructions.add(instruction);
+        }
+
+        if(instructions.size() == 1) return instructions.get(0); //If there's no conflict we can return the right instruction
+
+        boolean reg = isReg(cmd);
+        //TODO: Selection of the right instruction
+
+        for(Instruction instruction : instructions){
+            if(instruction.isReg() == reg) return instruction;
+        }
+
+        System.out.println(cmd + "\nIs not a valid instruction");
+        System.exit(1);
+        return null;
+    }
+
+    private boolean isReg(String line){
+        int n = line.length();
+        for(int i = 0; i<n; i++){
+            if(line.charAt(i) == '#') return true;
+        }
+        return false;
+    }
 	
 	/**
 	 * 
@@ -95,28 +147,5 @@ public class InstructionClass {
 		System.out.println("Error in InstructionClass::to_bin_class, not an instruction: " + cmd);
 		System.exit(1);
 		return "";
-	}
-	
-	/**
-	 * 
-	 * @param cmd the command name in assembler
-	 * @return the class of the instruction
-	 */
-	public int classe(String cmd){
-		for(Instruction instruction : class2){
-			if(cmd.equals(instruction.getName())) return instruction.getClasse();
-		}
-		
-		for(Instruction instruction : class5){
-			if(cmd.equals(instruction.getName())) return instruction.getClasse();
-		}
-		
-		for(Instruction instruction : class8){
-			if(cmd.equals(instruction.getName())) return instruction.getClasse();
-		}
-		
-		System.out.println("Error in InstructionClass::classe, not an instruction: " + cmd);
-		System.exit(1);
-		return 1;
 	}
 }

@@ -8,29 +8,15 @@ import Instructions.InstructionClass;
  */
 
 public class Translator {
-	
-	private String current_line;
+
 	private InstructionClass IC;
+	private Chopper chopper;
 	
 	/**
 	 * Constructor of the Translator, construct an InstructionClass
 	 */
 	public Translator(){
 		IC = new InstructionClass();
-	}
-	
-	public String nextWord(){
-		StringBuilder res = new StringBuilder();
-		int i;
-		for(i = 0; i<current_line.length(); i++){
-			if(current_line.charAt(i) == ' ') break;
-			res.append(current_line.charAt(i));
-		}
-		
-		if(current_line.length() != 0 ) current_line = current_line.substring(i-1, current_line.length()-1);
-		else current_line = "";
-		
-		return res.toString();
 	}
 	
 	/**
@@ -41,9 +27,9 @@ public class Translator {
 	 * TODO: Currently only transform the class of the instruction
 	 */
 	public String toBin(String line){
-		current_line = line;
-		String instruct = nextWord();
-		String instruct_bin = IC.to_bin_class(instruct);
-		return instruct_bin;
+        chopper = new Chopper(line);
+        String instruct = chopper.getKeyWord(0); //The command is always the 0th element
+        String res = IC.to_bin_class(instruct);
+		return res;
 	}
 }

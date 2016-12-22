@@ -8,4 +8,7 @@ package Instructions;
 public interface Instruction {
 	int getClasse();
 	String getName();
+	boolean isReg();
+    String getCode_classe();
+    String getCodeOp();
 }

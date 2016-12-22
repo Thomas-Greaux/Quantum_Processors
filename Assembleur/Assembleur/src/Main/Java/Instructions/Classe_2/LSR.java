@@ -3,26 +3,26 @@ package Instructions.Classe_2;
 import Instructions.Instruction;
 
 public class LSR extends Instruction2{
-	int code_op[];
-	int size;
-	String name;
+	private String code_op;
+	private String name;
+    private boolean reg;
 	
 	
 	public LSR(){
-		code_op = new int[5];
-		code_op[0] = 0;
-		code_op[1] = 0;
-		code_op[2] = 1;
-		size = 3;
-		
+        reg = false;
+		code_op = "001";
 		name = "LSR";
 	}
 	
-	public int[] getCodeOp(){
+	public String getCodeOp(){
 		return code_op;
 	}
 	
 	public String getName(){
 		return name;
 	}
+
+    public boolean isReg() {
+        return reg;
+    }
 }

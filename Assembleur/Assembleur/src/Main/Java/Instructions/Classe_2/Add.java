@@ -3,26 +3,31 @@ package Instructions.Classe_2;
 import Instructions.Instruction;
 
 public class Add extends Instruction2{
-	int code_op[];
+	String code_op;
 	String name;
-	
-	public Add(){
-		code_op = new int[5];
-		code_op[0] = 0;
-		code_op[1] = 1;
-		code_op[2] = 1;
-		code_op[3] = 0;
-		code_op[4] = 0;
-		
+    boolean reg;
+
+    /**
+     * The constructor needs a boolean to know if it's an imm or reg instruction
+     * @param reg
+     */
+	public Add(boolean reg){
+        this.reg = reg;
+		if(reg) code_op = "01100";
+        else code_op = "01110";
 		name = "ADD";
 	}
 	
-	public int[] getCodeOp(){
+	public String getCodeOp(){
 		return code_op;
 	}
 	
 	public String getName(){
 		return name;
 	}
+
+    public boolean isReg() {
+        return reg;
+    }
 	
 }

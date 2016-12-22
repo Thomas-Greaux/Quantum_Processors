@@ -72,6 +72,18 @@ public class Chopper {
         }
     }
 
+    /**
+     * @param i the key_word desired
+     * @return the ith key_word
+     */
+    public String getKeyWord(int i){
+        return key_words.get(i);
+    }
+
+    /**
+     * For try purposes
+     * @param args
+     */
     public static void main(String[] args) {
         Chopper chopper = new Chopper("ADD R1,R2");
         chopper.display();
