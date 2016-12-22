@@ -2,9 +2,8 @@ package Instructions.Classe_2;
 
 import Instructions.Instruction;
 
-public class Sub implements Instruction{
+public class Sub extends Instruction2{
 	int code_op[];
-	int classe;
 	String name;
 	
 	public Sub(){
@@ -14,13 +13,8 @@ public class Sub implements Instruction{
 		code_op[2] = 1;
 		code_op[3] = 0;
 		code_op[4] = 1;
-		classe = 2;
 		
 		name = "SUB";
-	}
-	
-	public int getClasse(){
-		return classe;
 	}
 	
 	public int[] getCodeOp(){

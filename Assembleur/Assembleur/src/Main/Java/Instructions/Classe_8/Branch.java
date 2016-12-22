@@ -1,8 +1,6 @@
 package Instructions.Classe_8;
 
-import Instructions.Instruction;
-
-public class Branch implements Instruction{
+public class Branch extends Instruction8{
 	
 	int code_op[];
 	int size;

@@ -2,13 +2,12 @@ package Instructions.Classe_5;
 
 import Instructions.Instruction;
 
-public class Store implements Instruction{ // /!\ A modifier, implementation T2
+public class Store extends Instruction5{ // /!\ A modifier, implementation T2
 	
 	int op_A[];
 	int size_A;
 	int op_B[];
 	int size_B;
-	int classe;
 	String name;
 	
 	
@@ -26,14 +25,8 @@ public class Store implements Instruction{ // /!\ A modifier, implementation T2
 		op_B[0] = 0;
 		
 		size_B = 1;
-
-		classe = 5;
 		
 		name = "STR";
-	}
-	
-	public int getClasse(){
-		return classe;
 	}
 	
 	public String getName(){

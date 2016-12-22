@@ -2,9 +2,8 @@ package Instructions.Classe_2;
 
 import Instructions.Instruction;
 
-public class LSR implements Instruction{
+public class LSR extends Instruction2{
 	int code_op[];
-	int classe;
 	int size;
 	String name;
 	
@@ -15,13 +14,8 @@ public class LSR implements Instruction{
 		code_op[1] = 0;
 		code_op[2] = 1;
 		size = 3;
-		classe = 2;
 		
 		name = "LSR";
-	}
-	
-	public int getClasse(){
-		return classe;
 	}
 	
 	public int[] getCodeOp(){
