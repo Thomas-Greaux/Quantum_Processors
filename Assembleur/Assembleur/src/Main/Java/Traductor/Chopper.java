@@ -26,6 +26,12 @@ public class Chopper {
         nb_instructions = key_words.size();
     }
 
+    /**
+     * Chop the instruction into the key_words
+     * called only when constructing an object
+     * @param cmd the instruction
+     */
+
     private void chop(String cmd){
         int n = cmd.length();
         //l and r will be used to chop the string
@@ -42,6 +48,11 @@ public class Chopper {
         if(l != r) key_words.add(cmd.substring(l, r)); //The last key_word is not necessarily followed by a separator
     }
 
+    /**
+     * Determine if a character is or not a separator
+     * @param c the character
+     * @return true or false
+     */
     private boolean separator(char c){
         int n = separators.length;
         for(char s : separators){
@@ -50,6 +61,9 @@ public class Chopper {
         return false;
     }
 
+    /**
+     * Display the number of key_words and said key_words
+     */
     public void display(){
         int n = nb_instructions;
         System.out.println("There are " + n + " key_words");
