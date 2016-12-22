@@ -7,7 +7,7 @@ import Instructions.Classe_8.*;
 /**
  * 
  * @author Thomas Greaux
- * This class determine which can of instruction we're dealing with
+ * This class determine which kind of instruction we're dealing with
  *
  */
 
@@ -46,47 +46,47 @@ public class InstructionClass {
 	
 	/**
 	 * 
-	 * @param the instruction com in assambleur
-	 * @return the instruction com in binary
+	 * @param cmd the command name in assembler
+	 * @return the instruction cmd in binary
 	 */
 	
-	public String to_bin_class(String com){
+	public String to_bin_class(String cmd){
 		for(Instruction instruction : class2){
-			if(com.equals(instruction.getName())) return codeop2;
+			if(cmd.equals(instruction.getName())) return codeop2;
 		}
 		
 		for(Instruction instruction : class5){
-			if(com.equals(instruction.getName())) return codeop5;
+			if(cmd.equals(instruction.getName())) return codeop5;
 		}
 		
 		for(Instruction instruction : class8){
-			if(com.equals(instruction.getName())) return codeop8;
+			if(cmd.equals(instruction.getName())) return codeop8;
 		}
 		
-		System.out.println("Error in InstructionClass::to_bin_class, not an instruction: " + com);
+		System.out.println("Error in InstructionClass::to_bin_class, not an instruction: " + cmd);
 		System.exit(1);
 		return "";
 	}
 	
 	/**
 	 * 
-	 * @param the instruction com in assembleur
+	 * @param cmd the command name in assembler
 	 * @return the class of the instruction
 	 */
-	public int classe(String com){
+	public int classe(String cmd){
 		for(Instruction instruction : class2){
-			if(com.equals(instruction.getName())) return instruction.getClasse();
+			if(cmd.equals(instruction.getName())) return instruction.getClasse();
 		}
 		
 		for(Instruction instruction : class5){
-			if(com.equals(instruction.getName())) return instruction.getClasse();
+			if(cmd.equals(instruction.getName())) return instruction.getClasse();
 		}
 		
 		for(Instruction instruction : class8){
-			if(com.equals(instruction.getName())) return instruction.getClasse();
+			if(cmd.equals(instruction.getName())) return instruction.getClasse();
 		}
 		
-		System.out.println("Error in InstructionClass::classe, not an instruction: " + com);
+		System.out.println("Error in InstructionClass::classe, not an instruction: " + cmd);
 		System.exit(1);
 		return 1;
 	}
