@@ -35,7 +35,7 @@ public class Translator {
 	
 	/**
 	 * Transform an assembleur instruction to binary, readable by the controllor
-	 * @param the line containing the instruction
+	 * @param line containing one instruction
 	 * @return the instruction in binary
 	 * 
 	 * TODO: Currently only transform the class of the instruction
