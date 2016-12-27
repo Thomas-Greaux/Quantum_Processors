@@ -1,21 +1,52 @@
 package Instructions;
 
+import java.util.ArrayList;
+
 /**
  * Interface of an instruction
  * @author Thomas Greaux
  *
  */
 public interface Instruction {
-	int getClasse();
+    String categoryA = "A";
+    String categoryB = "B";
+    String categoryC = "C";
+    String categoryD = "D";
+
+    String categoryAbin = "00";
+    String categoryBbin = "010000";
+    String categoryCbin = "0110";
+    String categoryDbin = "1101";
+
+	String getCategory();
 	String getName();
-	boolean isReg();
-    String getCode_classe();
-    String getCodeOp();
-	default String toBin(){return getCode_classe() + getCodeOp();}
+	default boolean isReg(ArrayList<String> key_words){
+        for(String str : key_words){
+            int n = str.length();
+            for(int i = 0; i<n; i++){
+                if(str.charAt(i) == '#') return false;
+            }
+        }
+        return true;
+    }
+    boolean isReg();
+    default String categoryToBin(){
+        String str = getCategory();
+        switch(str){
+            case categoryA: return categoryAbin;
+            case categoryB: return categoryBbin;
+            case categoryC: return categoryCbin;
+            case categoryD: return categoryDbin;
+        }
+        System.out.println("Not a category: " + str);
+        System.exit(1);
+        return "";
+    }
+    String codeopToBin();
+	String toBin();
     default void display(){
         System.out.println("Instruction: " + getName());
-        System.out.println("\tClasse: " + getClasse());
-        System.out.println("\tCode Classe: " + getCode_classe());
-        System.out.println("\tCode op: " + getCodeOp() + "\n");
+        System.out.println("\tCategory: " + getCategory());
+        System.out.println("\tCode op: " + codeopToBin() + "\n");
     }
 }

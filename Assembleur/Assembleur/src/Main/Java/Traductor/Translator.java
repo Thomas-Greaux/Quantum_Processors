@@ -1,11 +1,6 @@
 package Traductor;
-import Instructions.Classe_2.Instruction2;
-import Instructions.Classe_3.Instruction3;
-import Instructions.Classe_5.Instruction5;
-import Instructions.Classe_8.Instruction8;
-import Instructions.Instruction;
-
-import java.util.ArrayList;
+import Instructions.Add;
+import Instructions.*;
 
 /**
  * This object will translate the assembler instruction to an instruction object, which is able to translate itself
@@ -21,10 +16,7 @@ public class Translator {
     private String codeop5;
     private String codeop8;
 
-    private Instruction2[] class2;
-    private Instruction3[] class3;
-    private Instruction5[] class5;
-    private Instruction8[] class8;
+    private String[] instructions;
 
 
     /**
@@ -37,39 +29,32 @@ public class Translator {
         codeop5 = "0101";
         codeop8 = "1101";
 
-        class2 = new Instruction2[7];
-        class2[0] = new Instructions.Classe_2.Add(true);
-        class2[1] = new Instructions.Classe_2.Add(false);
-        class2[2] = new Instructions.Classe_2.ASR();
-        class2[3] = new Instructions.Classe_2.LSL();
-        class2[4] = new Instructions.Classe_2.LSR();
-        class2[5] = new Instructions.Classe_2.Move();
-        class2[6] = new Instructions.Classe_2.Sub();
-
-        class3 = new Instruction3[16];
-        class3[0] = new Instructions.Classe_3.ADC();
-        class3[1] = new Instructions.Classe_3.AND();
-        class3[2] = new Instructions.Classe_3.ASR();
-        class3[3] = new Instructions.Classe_3.BIC();
-        class3[4] = new Instructions.Classe_3.CMN();
-        class3[5] = new Instructions.Classe_3.CMP();
-        class3[6] = new Instructions.Classe_3.EOR();
-        class3[7] = new Instructions.Classe_3.LSL();
-        class3[8] = new Instructions.Classe_3.LSR();
-        class3[9] = new Instructions.Classe_3.MUL();
-        class3[10] = new Instructions.Classe_3.MVN();
-        class3[11] = new Instructions.Classe_3.ORR();
-        class3[12] = new Instructions.Classe_3.ROR();
-        class3[13] = new Instructions.Classe_3.RSB();
-        class3[14] = new Instructions.Classe_3.SBC();
-        class3[15] = new Instructions.Classe_3.TST();
-
-        class5 = new Instruction5[2];
-        class5[0] = new Instructions.Classe_5.Load();
-        class5[1] = new Instructions.Classe_5.Store();
-
-        class8 = new Instruction8[1];
-        class8[0] = new Instructions.Classe_8.Branch();
+        instructions = new String[25];
+        instructions[0] = "ADD";
+        instructions[1] = "ASR";
+        instructions[2] = "LSL";
+        instructions[3] = "LSR";
+        instructions[4] = "MOV";
+        instructions[5] = "SUB";
+        instructions[6] = "ADC";
+        instructions[7] = "AND";
+        instructions[8] = "ASR";
+        instructions[9] = "BIC";
+        instructions[10] = "CMN";
+        instructions[11] = "CMP";
+        instructions[12] = "EOR";
+        instructions[13] = "LSL";
+        instructions[14] = "LSR";
+        instructions[15] = "MUL";
+        instructions[16] = "MVN";
+        instructions[17] = "ORR";
+        instructions[18] = "ROR";
+        instructions[19] = "RSB";
+        instructions[20] = "SBC";
+        instructions[21] = "TST";
+        instructions[22] = "LDR";
+        instructions[23] = "STR";
+        instructions[24] = "B";
     }
 
     /**
@@ -79,53 +64,45 @@ public class Translator {
      */
 
     public Instruction getInstruction(String line){
-        ArrayList<Instruction> instructions = new ArrayList<>(); //List of instructions matching the name
         chopper = new Chopper(line);
         String cmd = chopper.getKeyWord(0); //The command name is always the 0th element
 
-        //Completion of instructions
-        for(Instruction instruction : class2){
-            if(cmd.equals(instruction.getName())) instructions.add(instruction);
-        }
+        int n =instructions.length;
+        for(int i = 0; i<n; i++){
+            if(cmd.equals(instructions[i])){
+                switch (i){
+                    case 0: return new Add(chopper.getKeyWords());
+                    case 1: return new ASR(chopper.getKeyWords());
+                    case 2: return new LSL(chopper.getKeyWords());
+                    case 3: return new LSR(chopper.getKeyWords());
+                    case 4: return new Move(chopper.getKeyWords());
+                    case 5: return new Sub(chopper.getKeyWords());
+                    case 6: return new ADC(chopper.getKeyWords());
+                    case 7: return new AND(chopper.getKeyWords());
+                    case 8: return new ASR(chopper.getKeyWords());
+                    case 9: return new BIC(chopper.getKeyWords());
+                    case 10: return new CMN(chopper.getKeyWords());
+                    case 11: return new CMP(chopper.getKeyWords());
+                    case 12: return new EOR(chopper.getKeyWords());
+                    case 13: return new LSL(chopper.getKeyWords());
+                    case 14: return new LSR(chopper.getKeyWords());
+                    case 15: return new MUL(chopper.getKeyWords());
+                    case 16: return new MVN(chopper.getKeyWords());
+                    case 17: return new ORR(chopper.getKeyWords());
+                    case 18: return new ROR(chopper.getKeyWords());
+                    case 19: return new RSB(chopper.getKeyWords());
+                    case 20: return new SBC(chopper.getKeyWords());
+                    case 21: return new TST(chopper.getKeyWords());
+                    case 22: return new Load(chopper.getKeyWords());
+                    case 23: return new Store(chopper.getKeyWords());
+                    case 24: return new Branch(chopper.getKeyWords());
 
-        for(Instruction instruction : class3){
-            if(cmd.equals(instruction.getName())) instructions.add(instruction);
-        }
-
-        for(Instruction instruction : class5){
-            if(cmd.equals(instruction.getName())) instructions.add(instruction);
-        }
-
-        for(Instruction instruction : class8){
-            if(cmd.equals(instruction.getName())) instructions.add(instruction);
-        }
-
-        if(instructions.size() == 1) return instructions.get(0); //If there's no conflict we can return the right instruction
-
-        boolean reg = isReg(line);
-
-        for(Instruction instruction : instructions){
-            if(instruction.isReg() == reg) return instruction;
+                }
+            }
         }
 
         System.out.println(line + "\nIs not a valid instruction");
         System.exit(1);
         return null;
     }
-
-    private boolean isReg(String line){
-        int n = line.length();
-        for(int i = 0; i<n; i++){
-            if(line.charAt(i) == '#') return false;
-        }
-        return true;
-    }
-
-    public void display(){
-        for(Instruction instruction : class2) instruction.display();
-        for(Instruction instruction : class3) instruction.display();
-        for(Instruction instruction : class5) instruction.display();
-        for(Instruction instruction : class8) instruction.display();
-    }
-
 }

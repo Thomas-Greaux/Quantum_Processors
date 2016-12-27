@@ -1,0 +1,70 @@
+Categorie A
+	sens inverse des operandes
+LSL
+	LSLS   <Rd>,<Rm>,#<imm5> Outside IT block
+	LSL<c> <Rd>,<Rm>,#<imm5>  Inside IT block
+LSR
+	LSRS   <Rd>,<Rm>,#<imm5> Outside IT block
+	LSR<c> <Rd>,<Rm>,#<imm5>  Inside IT block
+ASR
+	ASRS   <Rd>,<Rm>,#<imm5> Outside IT block
+	ASR<c> <Rd>,<Rm>,#<imm5>  Inside IT block
+ADD
+	ADDS   <Rd>,<Rn>,<Rm> Outside IT block
+	ADD<c> <Rd>,<Rn>,<Rm>  Inside IT block
+SUB
+	SUBS   <Rd>,<Rn>,<Rm> Outside IT block
+	SUB<c> <Rd>,<Rn>,<Rm>  Inside IT block
+ADD
+	ADDS   <Rd>,<Rn>,#<imm3> Outside IT block
+	ADD<c> <Rd>,<Rn>,#<imm3>  Inside IT block
+MOV
+	MOVS   <Rd>,#<imm8> Outside IT block
+	MOV<c> <Rd>,#<imm8>  Inside IT block
+
+Categorie B
+AND
+	ANDS   <Rdn>,<Rm> Outside IT block
+	AND<c> <Rdn>,<Rm>  Inside IT block
+EOR
+	EORS   <Rdn>,<Rm> Outside IT block
+	EOR<c> <Rdn>,<Rm>  Inside IT block
+LSL
+	LSLS   <Rdn>,<Rm> Outside IT block
+	LSL<c> <Rdn>,<Rm>  Inside IT block
+LSR
+	LSRS   <Rdn>,<Rm> Outside IT block
+	LSR<c> <Rdn>,<Rm>  Inside IT block
+ASR
+	ASRS   <Rdn>,<Rm> Outside IT block
+	ASR<c> <Rdn>,<Rm>  Inside IT block
+ADC
+	ADCS   <Rdn>,<Rm> Outside IT block
+	ADC<c> <Rdn>,<Rm>  Inside IT block
+SBC
+	SBCS   <Rdn>,<Rm> Outside IT block
+	SBC<c> <Rdn>,<Rm>  Inside IT block
+ROR
+	RORS   <Rdn>,<Rm> Outside IT block
+	ROR<c> <Rdn>,<Rm>  Inside IT block
+TST
+	TST<c> <Rn>,<Rm>
+RSB
+	RSBS   <Rd>,<Rn>,#0 Outside IT block
+	RSB<c> <Rd>,<Rn>,#0  Inside IT block
+CMP
+	CMP<c> <Rn>,<Rm>
+CMN
+	CMN<c> <Rn>,<Rm>
+ORR
+	ORRS   <Rdn>,<Rm>
+	ORR<c> <Rdn>,<Rm>
+MUL
+	MULS   <Rdm>,<Rn>,<Rdm>
+	MUL<c> <Rdm>,<Rn>,<Rdm>
+BIC
+	BICS   <Rdn>,<Rm>
+	BIC<c> <Rdn>,<Rm>
+MVN
+	MVNS   <Rd>,<Rm>
+	MVN<c> <Rd>,<Rm>

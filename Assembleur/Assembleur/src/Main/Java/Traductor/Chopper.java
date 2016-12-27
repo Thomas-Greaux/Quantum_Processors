@@ -10,16 +10,14 @@ import java.util.List;
  */
 public class Chopper {
     private char[] separators;
-    private String cmd;
     int nb_instructions;
-    List<String> key_words;
+    ArrayList<String> key_words;
 
     public Chopper(String cmd){
         separators = new char[2];
         separators[0] = ' ';
         separators[1] = ',';
 
-        this.cmd = cmd;
         key_words = new ArrayList<String>();
 
         chop(cmd);
@@ -81,11 +79,18 @@ public class Chopper {
     }
 
     /**
+     * @return all the key_words in a list
+     */
+    public ArrayList<String> getKeyWords(){
+        return key_words;
+    }
+
+    /**
      * For try purposes
      * @param args
      */
     public static void main(String[] args) {
-        Chopper chopper = new Chopper("ADD R1,R2");
+        Chopper chopper = new Chopper("ADD R1,R2,R3");
         chopper.display();
     }
 }
