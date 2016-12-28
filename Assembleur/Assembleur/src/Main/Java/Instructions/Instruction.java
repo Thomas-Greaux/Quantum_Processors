@@ -43,6 +43,7 @@ public interface Instruction {
         return "";
     }
     String codeopToBin();
+    void opToBin();
 	String toBin();
     default void display(){
         System.out.println("Instruction: " + getName());

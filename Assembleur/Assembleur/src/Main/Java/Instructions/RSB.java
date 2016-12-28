@@ -37,7 +37,14 @@ public class RSB implements Instruction{
     }
 
     @Override
+    public void opToBin() {
+        rd = ToBin.opToBin(rd, 3);
+        rn = ToBin.opToBin(rn, 3);
+    }
+
+    @Override
     public String toBin() {
+        opToBin();
         StringBuilder res = new StringBuilder();
         res.append(categoryToBin());
         res.append(codeopToBin());

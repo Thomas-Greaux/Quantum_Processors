@@ -36,6 +36,11 @@ public class Load implements Instruction{ // /!\ A modifier, implementation T2
 	}
 
 	@Override
+	public void opToBin() {
+
+	}
+
+	@Override
 	public String toBin() {
 		return null;
 	}

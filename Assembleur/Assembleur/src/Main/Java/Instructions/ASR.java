@@ -46,7 +46,20 @@ public class ASR implements Instruction{
 	}
 
 	@Override
+	public void opToBin() {
+        rm = ToBin.opToBin(rm, 3);
+		if(isReg()){
+            rdn = ToBin.opToBin(rdn, 3);
+		}
+		else{
+            rd = ToBin.opToBin(rd, 3);
+            imm = ToBin.opToBin(imm, 5);
+        }
+	}
+
+	@Override
 	public String toBin() {
+        opToBin();
 		StringBuilder res = new StringBuilder();
 		res.append(categoryToBin());
 		res.append(codeopToBin());

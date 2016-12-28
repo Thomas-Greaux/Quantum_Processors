@@ -37,7 +37,14 @@ public class MUL implements Instruction{
     }
 
     @Override
+    public void opToBin() {
+        rn = ToBin.opToBin(rn, 3);
+        rdm = ToBin.opToBin(rdm, 3);
+    }
+
+    @Override
     public String toBin() {
+        opToBin();
         StringBuilder res = new StringBuilder();
         res.append(categoryToBin());
         res.append(codeopToBin());

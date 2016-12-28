@@ -8,10 +8,11 @@ public class Branch implements Instruction{
 	private String name = "B";
 	private boolean reg;
 	private String imm;
+    private String cond;
 	
 	
 	public Branch(ArrayList<String> key_words){
-        String cond = key_words.get(0);
+        cond = key_words.get(0);
         if(!cond.equals("1111") && !cond.equals("1110")) codeop = cond;
         else{
             System.out.println("Invalid branching condition: " + cond + "\nMust be NOT 111x");
@@ -40,7 +41,14 @@ public class Branch implements Instruction{
 	}
 
 	@Override
+	public void opToBin() {
+        cond = ToBin.opToBin(cond, 4);
+		imm = ToBin.opToBin(imm, 8);
+	}
+
+	@Override
 	public String toBin() {
+        opToBin();
         StringBuilder res = new StringBuilder();
         res.append(categoryToBin());
         res.append(codeopToBin());

@@ -46,8 +46,17 @@ public class Add implements Instruction{
 		return codeop;
 	}
 
-	@Override
+    @Override
+    public void opToBin() {
+        rn = ToBin.opToBin(rn, 3);
+        rd = ToBin.opToBin(rd, 3);
+        if(isReg())rm = ToBin.opToBin(rm, 3);
+        else imm = ToBin.opToBin(imm, 3);
+    }
+
+    @Override
 	public String toBin() {
+        opToBin();
         StringBuilder res = new StringBuilder();
         res.append(categoryToBin());
         res.append(codeopToBin());

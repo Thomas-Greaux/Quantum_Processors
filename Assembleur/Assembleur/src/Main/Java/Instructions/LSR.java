@@ -46,7 +46,21 @@ public class LSR implements Instruction{
 	}
 
 	@Override
+	public void opToBin() {
+		if(isReg()) {
+			rm = ToBin.opToBin(rm, 3);
+			rdn = ToBin.opToBin(rdn, 3);
+		}
+		else {
+			rm = ToBin.opToBin(rm, 3);
+			rd = ToBin.opToBin(rd, 3);
+			imm = ToBin.opToBin(imm, 5);
+		}
+	}
+
+	@Override
 	public String toBin() {
+        opToBin();
 		StringBuilder res = new StringBuilder();
 		res.append(categoryToBin());
 		res.append(codeopToBin());

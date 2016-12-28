@@ -38,7 +38,14 @@ public class CMN implements Instruction{
     }
 
     @Override
+    public void opToBin() {
+        rn = ToBin.opToBin(rn, 3);
+        rm = ToBin.opToBin(rm, 3);
+    }
+
+    @Override
     public String toBin() {
+        opToBin();
         StringBuilder res = new StringBuilder();
         res.append(categoryToBin());
         res.append(codeopToBin());

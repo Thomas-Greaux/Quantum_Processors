@@ -27,9 +27,5 @@ public class Main {
         instruction = "EOR R1,#R2";
         res = t.getInstruction(instruction);
         System.out.println(res.toBin());
-
-        instruction = "B R1,#R2";
-        res = t.getInstruction(instruction);
-        System.out.println(res.toBin());
     }
 }

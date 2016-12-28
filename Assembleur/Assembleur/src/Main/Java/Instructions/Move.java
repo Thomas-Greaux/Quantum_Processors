@@ -35,7 +35,14 @@ public class Move implements Instruction{
 	}
 
 	@Override
+	public void opToBin() {
+		rd = ToBin.opToBin(rd, 3);
+		imm = ToBin.opToBin(imm, 8);
+	}
+
+	@Override
 	public String toBin() {
+        opToBin();
         StringBuilder res = new StringBuilder();
         res.append(categoryToBin());
         res.append(codeopToBin());
