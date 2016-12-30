@@ -6,6 +6,8 @@ package Instructions;
  */
 public class ToBin {
 
+    //TODO: exception si il n'y a pas assez de bits pour encoder
+
     /**
      * Code the operand in binary, using n bytes (more if necessary)
      * @param operand
@@ -45,5 +47,10 @@ public class ToBin {
         res.reverse();
         while(res.length() < n) res.insert(0, '0');
         return res.toString();
+    }
+
+    public static void main(String[] args) {
+        ToBin t = new ToBin();
+        System.out.println(t.opToBin("1100", 4));
     }
 }

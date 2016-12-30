@@ -15,7 +15,7 @@ public interface Instruction {
 
     String categoryAbin = "00";
     String categoryBbin = "010000";
-    String categoryCbin = "0110";
+    String categoryCbin = "1001";
     String categoryDbin = "1101";
 
 	String getCategory();

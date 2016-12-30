@@ -3,8 +3,7 @@ package Instructions;
 import java.util.ArrayList;
 
 public class LSL implements Instruction{
-    private String codeopA = "010";
-    private String codeopB = "0010";
+	private String codeop;
 	private String name = "LSL";
 	private boolean reg;
 	private String rd;
@@ -18,10 +17,12 @@ public class LSL implements Instruction{
 		reg = isReg(key_words);
         rm = key_words.get(2); //rm is always the second operand
 		if(!isReg()) {
+			codeop = "000";
 			rd = key_words.get(1);
 			imm = key_words.get(3);
 		}
 		else{
+			codeop = "0010";
 			rdn = key_words.get(1);
 		}
 	}
@@ -42,8 +43,7 @@ public class LSL implements Instruction{
 
 	@Override
 	public String codeopToBin() {
-		if(!isReg()) return codeopA;
-        else return codeopB;
+		return codeop;
 	}
 
 	@Override

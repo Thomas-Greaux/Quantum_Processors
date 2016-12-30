@@ -20,7 +20,7 @@ public class Add implements Instruction{
 		rn = key_words.get(2);
 		if(isReg()){
             rm = key_words.get(3);
-            codeop = "01110";
+            codeop = "01100";
         }
         else {
             imm = key_words.get(3);

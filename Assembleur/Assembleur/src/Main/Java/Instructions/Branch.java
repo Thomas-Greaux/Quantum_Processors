@@ -12,14 +12,14 @@ public class Branch implements Instruction{
 	
 	
 	public Branch(ArrayList<String> key_words){
-        cond = key_words.get(0);
+        cond = key_words.get(1);
         if(!cond.equals("1111") && !cond.equals("1110")) codeop = cond;
         else{
             System.out.println("Invalid branching condition: " + cond + "\nMust be NOT 111x");
             System.exit(2);
         }
+		imm = key_words.get(2);
 		reg = isReg(key_words);
-        imm = key_words.get(1);
 	}
 
 	@Override
