@@ -27,13 +27,14 @@ public class ReadFile {
 	}
 	
 	public String read_instruction(){
-		String instruction;
+		String instruction = null;
 		try {
 			instruction = reader.readLine();
 		} catch (IOException e) {
 			System.out.println("Could not read the next line\n");
-			instruction = "exit";
+			System.exit(3);
 		}
+		if(instruction == null) instruction = "exit";
 		return instruction;
 	}
 	
