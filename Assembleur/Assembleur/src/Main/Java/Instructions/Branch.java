@@ -42,7 +42,6 @@ public class Branch implements Instruction{
 
 	@Override
 	public void opToBin() {
-        cond = ToBin.opToBin(cond, 4);
 		imm = imm.substring(1);
 	}
 
