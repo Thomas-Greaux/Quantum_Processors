@@ -17,7 +17,7 @@ public class ROM {
 	private final int HEIGHT = 16;
 	
 	public ROM(){
-		memory = new ArrayList<Byte>();
+		memory = new ArrayList<>();
 		pw = null;
 		for(int i = 0; i < WIDTH; i++){
 			for(int j = 0; j < HEIGHT; j++){
@@ -43,7 +43,7 @@ public class ROM {
 	 */
 	
 	public void print(){
-		ArrayList<Byte> tmp = new ArrayList<Byte>();
+		ArrayList<Byte> tmp = new ArrayList<>();
 		int k = 0;
 		
 		for(int i = 0; i < HEIGHT; i++){

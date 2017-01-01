@@ -54,7 +54,7 @@ public class LSR implements Instruction{
 		else {
 			rm = ToBin.opToBin(rm, 3);
 			rd = ToBin.opToBin(rd, 3);
-			imm = ToBin.opToBin(imm, 5);
+			imm = imm.substring(1);
 		}
 	}
 

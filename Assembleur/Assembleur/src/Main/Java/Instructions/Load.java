@@ -40,6 +40,7 @@ public class Load implements Instruction{
 	@Override
 	public void opToBin() {
         rt = ToBin.opToBin(rt, 3);
+		imm = imm.substring(1);
 	}
 
 	@Override

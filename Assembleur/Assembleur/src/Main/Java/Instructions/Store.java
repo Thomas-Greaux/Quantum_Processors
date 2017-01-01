@@ -2,7 +2,7 @@ package Instructions;
 
 import java.util.ArrayList;
 
-public class Store implements Instruction{ // /!\ A modifier, implementation T2
+public class Store implements Instruction{
 
 	private String codeop = "0";
 	private String name;
@@ -40,6 +40,7 @@ public class Store implements Instruction{ // /!\ A modifier, implementation T2
 	@Override
 	public void opToBin() {
 		rt = ToBin.opToBin(rt, 3);
+		imm = imm.substring(1);
 	}
 
 	@Override

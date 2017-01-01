@@ -7,7 +7,7 @@ import java.io.IOException;
 
 /**
  * 
- * @author Thomas Greaux
+ * @author GREAUX Thomas
  * A simple class in order to read the file
  *
  */

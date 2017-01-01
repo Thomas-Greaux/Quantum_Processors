@@ -51,7 +51,7 @@ public class Add implements Instruction{
         rn = ToBin.opToBin(rn, 3);
         rd = ToBin.opToBin(rd, 3);
         if(isReg())rm = ToBin.opToBin(rm, 3);
-        else imm = ToBin.opToBin(imm, 3);
+        else imm = imm.substring(1);
     }
 
     @Override

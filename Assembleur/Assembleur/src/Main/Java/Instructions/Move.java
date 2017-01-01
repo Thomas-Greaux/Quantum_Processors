@@ -37,7 +37,7 @@ public class Move implements Instruction{
 	@Override
 	public void opToBin() {
 		rd = ToBin.opToBin(rd, 3);
-		imm = ToBin.opToBin(imm, 8);
+		imm = imm.substring(1);
 	}
 
 	@Override

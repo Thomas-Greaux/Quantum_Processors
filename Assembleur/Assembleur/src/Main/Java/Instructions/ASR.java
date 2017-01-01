@@ -53,7 +53,7 @@ public class ASR implements Instruction{
 		}
 		else{
             rd = ToBin.opToBin(rd, 3);
-            imm = ToBin.opToBin(imm, 5);
+			imm = imm.substring(1);
         }
 	}
 
