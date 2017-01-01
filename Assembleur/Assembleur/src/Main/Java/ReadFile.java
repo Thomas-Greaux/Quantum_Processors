@@ -14,7 +14,10 @@ import java.io.IOException;
 
 public class ReadFile {
 	BufferedReader reader;
-	
+
+	/**
+	 * @param file the path of the file
+	 */
 	public ReadFile(String file){
 		try {
 			reader = new BufferedReader(new FileReader(file));
