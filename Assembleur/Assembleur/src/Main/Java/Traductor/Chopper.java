@@ -14,9 +14,10 @@ public class Chopper {
     ArrayList<String> key_words;
 
     public Chopper(String cmd){
-        separators = new char[2];
+        separators = new char[3];
         separators[0] = ' ';
         separators[1] = ',';
+        separators[2] = '\t';
 
         key_words = new ArrayList<String>();
 
@@ -44,6 +45,28 @@ public class Chopper {
         }
 
         if(l != r) key_words.add(cmd.substring(l, r)); //The last key_word is not necessarily followed by a separator
+
+        suffix();
+    }
+
+    /**
+     * handle the suffix of the instruction (ie ADDS / ADD<c>)
+     */
+    private void suffix(){
+        String instruction = key_words.get(0);
+        if(instruction.charAt(0) == 'B'){
+            if(instruction.length() == 1) key_words.add("AL");
+            else{
+                key_words.add(instruction.substring(1));
+                key_words.set(0, "B");
+            }
+        }
+        else{
+            if(instruction.length() > 3){
+                key_words.add(instruction.substring(3));
+                key_words.set(0, instruction.substring(0,3));
+            }
+        }
     }
 
     /**
@@ -90,7 +113,16 @@ public class Chopper {
      * @param args
      */
     public static void main(String[] args) {
-        Chopper chopper = new Chopper("ADD R1,R2,R3");
+        Chopper chopper;
+        chopper = new Chopper("ADD R1,R2,R3");
+        chopper.display();
+        chopper = new Chopper("ADDS R1,R2,R3");
+        chopper.display();
+        chopper = new Chopper("ADD1101 R1,R2,R3");
+        chopper.display();
+        chopper = new Chopper("B 101 110");
+        chopper.display();
+        chopper = new Chopper("BNE R1,R2,R3");
         chopper.display();
     }
 }
