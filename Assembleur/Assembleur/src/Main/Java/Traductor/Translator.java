@@ -2,6 +2,9 @@ package Traductor;
 import Instructions.Add;
 import Instructions.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * This object will translate the assembler instruction to an instruction object, which is able to translate itself
  * @author Thomas Greaux
@@ -10,6 +13,10 @@ import Instructions.*;
 
 public class Translator {
 
+    private HashMap<String, String> conds = new HashMap<>();
+
+
+    private ArrayList<Label> labels = new ArrayList<>();
 	private Chopper chopper;
     private String codeop2;
     private String codeop3;
@@ -55,6 +62,22 @@ public class Translator {
         instructions[22] = "LDR";
         instructions[23] = "STR";
         instructions[24] = "B";
+
+        conds.put("EQ", "0000");
+        conds.put("NE", "0001");
+        conds.put("CS", "0010");
+        conds.put("CC", "0011");
+        conds.put("MI", "0100");
+        conds.put("PL", "0101");
+        conds.put("VS", "0110");
+        conds.put("VC", "0111");
+        conds.put("HI", "1000");
+        conds.put("LS", "1001");
+        conds.put("GE", "1010");
+        conds.put("LT", "1011");
+        conds.put("GT", "1100");
+        conds.put("LE", "1101");
+        conds.put("AL", "1110");
     }
 
     /**
@@ -95,7 +118,14 @@ public class Translator {
                     case 21: return new TST(chopper.getKeyWords());
                     case 22: return new Load(chopper.getKeyWords());
                     case 23: return new Store(chopper.getKeyWords());
-                    case 24: return new Branch(chopper.getKeyWords());
+                    case 24: {
+                        String cond = condToBin(chopper.getKeyWord(2));
+                        String label = labelToBin(chopper.getKeyWord(1));
+                        ArrayList<String> list = new ArrayList(chopper.getKeyWords());
+                        list.set(1, label);
+                        list.set(2, cond);
+                        return new Branch(list);
+                    }
 
                 }
             }
@@ -104,5 +134,35 @@ public class Translator {
         System.out.println(line + "\nIs not a valid instruction");
         System.exit(1);
         return null;
+    }
+
+
+    /**
+     * Create a new Label
+     * @param name of the label
+     * @param nb address of the label
+     */
+    public void setLabel(String name, int nb){
+        nb *= 4;
+        String nbBin = ToBin.intToBin(nb, 8);
+        labels.add(new Label(name, nbBin));
+    }
+
+    /**
+     * Returns the label's encoding given its name
+     * @param name of the label
+     * @return the label's encoding
+     */
+    public String labelToBin(String name){
+        for(Label label : labels){
+            if(name.equals(label.getName())) return label.getAddress();
+        }
+        System.out.println("The label \"" + name + "\" does not exist");
+        System.exit(1);
+        return "";
+    }
+
+    public String condToBin(String cond){
+        return conds.get(cond);
     }
 }
