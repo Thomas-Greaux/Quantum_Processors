@@ -179,11 +179,11 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="Reset"/>
       <a name="labelloc" val="north"/>
     </comp>
+    <comp lib="11" loc="(290,270)" name="Controller"/>
     <comp lib="0" loc="(560,30)" name="Pin">
       <a name="tristate" val="false"/>
       <a name="label" val="CarryIn"/>
     </comp>
-    <comp lib="11" loc="(290,270)" name="Controller"/>
     <comp lib="0" loc="(690,450)" name="Tunnel">
       <a name="label" val="CarryIn"/>
     </comp>
