@@ -6,8 +6,14 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="fanout" val="8"/>
       <a name="incoming" val="8"/>
     </tool>
+    <tool name="Pin">
+      <a name="facing" val="west"/>
+    </tool>
     <tool name="Probe">
       <a name="facing" val="west"/>
+    </tool>
+    <tool name="Tunnel">
+      <a name="facing" val="east"/>
     </tool>
   </lib>
   <lib desc="#Gates" name="1"/>
@@ -70,6 +76,12 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(430,320)" to="(430,410)"/>
     <wire from="(390,320)" to="(390,410)"/>
     <wire from="(410,320)" to="(410,410)"/>
+    <comp lib="0" loc="(410,410)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Clk"/>
+      <a name="labelloc" val="south"/>
+    </comp>
     <comp lib="0" loc="(390,410)" name="Pin">
       <a name="facing" val="north"/>
       <a name="tristate" val="false"/>
@@ -84,9 +96,10 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="Dataout"/>
       <a name="labelloc" val="south"/>
     </comp>
-    <comp lib="0" loc="(410,410)" name="Clock">
+    <comp lib="0" loc="(450,420)" name="Pin">
       <a name="facing" val="north"/>
-      <a name="label" val="clk"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Clr"/>
       <a name="labelloc" val="south"/>
     </comp>
     <comp lib="0" loc="(280,340)" name="Pin">
@@ -95,26 +108,20 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="Datain"/>
       <a name="labelloc" val="south"/>
     </comp>
-    <comp lib="4" loc="(480,280)" name="RAM">
-      <a name="dataWidth" val="32"/>
-      <a name="bus" val="separate"/>
-    </comp>
-    <comp lib="0" loc="(280,280)" name="Pin">
-      <a name="width" val="8"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="Address"/>
-    </comp>
     <comp lib="0" loc="(430,410)" name="Pin">
       <a name="facing" val="north"/>
       <a name="tristate" val="false"/>
       <a name="label" val="Ld"/>
       <a name="labelloc" val="south"/>
     </comp>
-    <comp lib="0" loc="(450,420)" name="Pin">
-      <a name="facing" val="north"/>
+    <comp lib="0" loc="(280,280)" name="Pin">
+      <a name="width" val="8"/>
       <a name="tristate" val="false"/>
-      <a name="label" val="Clr"/>
-      <a name="labelloc" val="south"/>
+      <a name="label" val="Address"/>
+    </comp>
+    <comp lib="4" loc="(480,280)" name="RAM">
+      <a name="dataWidth" val="32"/>
+      <a name="bus" val="separate"/>
     </comp>
   </circuit>
 </project>
