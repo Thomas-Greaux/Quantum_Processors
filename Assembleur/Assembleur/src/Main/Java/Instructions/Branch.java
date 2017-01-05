@@ -7,18 +7,18 @@ public class Branch implements Instruction{
 	private String codeop; //NOT 111x
 	private String name = "B";
 	private boolean reg;
-	private String imm;
+	private String label;
     private String cond;
 	
 	
 	public Branch(ArrayList<String> key_words){
-        cond = key_words.get(1);
+		label = key_words.get(1);
+        cond = key_words.get(2);
         if(!cond.equals("1111") && !cond.equals("1110")) codeop = cond;
         else{
             System.out.println("Invalid branching condition: " + cond + "\nMust be NOT 111x");
             System.exit(2);
         }
-		imm = key_words.get(2);
 		reg = isReg(key_words);
 	}
 
@@ -42,7 +42,7 @@ public class Branch implements Instruction{
 
 	@Override
 	public void opToBin() {
-		imm = imm.substring(1);
+
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class Branch implements Instruction{
         StringBuilder res = new StringBuilder();
         res.append(categoryToBin());
         res.append(codeopToBin());
-        res.append(imm);
+        res.append(label);
         return res.toString();
 	}
 }

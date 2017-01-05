@@ -13,7 +13,9 @@ import java.io.IOException;
  */
 
 public class ReadFile {
-	BufferedReader reader;
+	private BufferedReader reader;
+	private int nb = -1;
+
 
 	/**
 	 * @param file the path of the file
@@ -25,7 +27,12 @@ public class ReadFile {
 			System.out.println("Could not open the file " + file + "\n");
 		}
 	}
-	
+
+    /**
+     * Read a line and returns it
+     * If the file ends, it returns "exit"
+     * @return the next line in the file
+     */
 	public String read_instruction(){
 		String instruction = null;
 		try {
@@ -35,8 +42,15 @@ public class ReadFile {
 			System.exit(3);
 		}
 		if(instruction == null) instruction = "exit";
+        nb++;
 		return instruction;
 	}
 	
-	
+	public int getNb(){
+        return nb;
+    }
+
+    public void setNb(int nb){
+        this.nb = nb;
+    }
 }

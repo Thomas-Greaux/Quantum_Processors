@@ -37,7 +37,7 @@ public class ToBin {
      * @param n the number of byte to use (must be greater than required or it is ignored)
      * @return i in binary (String)
      */
-    private static String intToBin(int i, int n){
+    public static String intToBin(int i, int n){
         StringBuilder res = new StringBuilder();
         while(i != 0){
             if(i%2 == 0) res.append("0");

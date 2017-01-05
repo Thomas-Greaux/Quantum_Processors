@@ -17,18 +17,24 @@ public class AssemblyToBin {
 
     public void translate(){
         String assembly;
-        String bin;
 
         while(!(assembly = readFile.read_instruction()).equals("exit")){
-            instruction = translator.getInstruction(assembly);
-            printFile.println(instruction.toBin());
+            if(assembly.charAt(assembly.length()-1) == ':') { //Si il s'agit d'un label, on l'enregistre et decremente l'addresse d'instruction
+                int num = readFile.getNb();
+                translator.setLabel(assembly.substring(0, assembly.length()-1), num);
+                readFile.setNb(num-1);
+            }
+            else {
+                instruction = translator.getInstruction(assembly); //Sinon, il s'agit d'une instruction
+                printFile.println(instruction.toBin());
+            }
         }
         printFile.flush();
 
     }
 
     public static void main(String[] args) {
-        BinToHex b = new BinToHex();
-        b.translate();
+        String test = "Ceci est un test";
+        System.out.println(test.substring(0, test.length()-1));
     }
 }
