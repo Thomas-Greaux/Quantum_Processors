@@ -37,14 +37,23 @@ public class Chopper {
         int l = 0;
         int r = 0;
 
-        for(; r<n; r++){
-            if(separator(cmd.charAt(r))){
-                key_words.add(cmd.substring(l, r));
-                l = r+1; //+1 to not get the separator
+        for(; l<n; l++){
+            if(separator(cmd.charAt(l))) {
+                for (r = l; r < n; r++) {
+                    if (!separator(cmd.charAt(r))) break;
+                }
+                r--;
+                l = r;
             }
-        }
+            else {
+                for (r = l; r < n; r++) {
+                    if (separator(cmd.charAt(r))) break;
+                }
+                key_words.add(cmd.substring(l, r));
+                l = r;
+            }
 
-        if(l != r) key_words.add(cmd.substring(l, r)); //The last key_word is not necessarily followed by a separator
+        }
 
         suffix();
     }
@@ -114,15 +123,7 @@ public class Chopper {
      */
     public static void main(String[] args) {
         Chopper chopper;
-        chopper = new Chopper("ADD R1,R2,R3");
-        chopper.display();
-        chopper = new Chopper("ADDS R1,R2,R3");
-        chopper.display();
-        chopper = new Chopper("ADD1101 R1,R2,R3");
-        chopper.display();
-        chopper = new Chopper("B 101 110");
-        chopper.display();
-        chopper = new Chopper("BNE R1,R2,R3");
+        chopper = new Chopper("  ADD \t  R1, ,R2,R3\t");
         chopper.display();
     }
 }

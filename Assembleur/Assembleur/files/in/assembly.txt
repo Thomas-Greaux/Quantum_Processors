@@ -1,9 +1,9 @@
 ADD R1,R2,R3
 ADD R6,R4,R3
 main:
-ADD R1,R2,#110
-SUB R4,R3,R7
+	ADD R1,R2,#110
 fibo:
+	SUB R4,R3,R7
 SUB R2,R5,R6
 BNE main
 BMI fibo
