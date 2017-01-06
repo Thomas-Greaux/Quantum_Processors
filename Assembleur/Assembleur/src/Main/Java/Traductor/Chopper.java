@@ -1,7 +1,6 @@
 package Traductor;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class chop an line into the different key words

@@ -51,6 +51,6 @@ public class ToBin {
 
     public static void main(String[] args) {
         ToBin t = new ToBin();
-        System.out.println(t.opToBin("1100", 4));
+        System.out.println(opToBin("1100", 4));
     }
 }
